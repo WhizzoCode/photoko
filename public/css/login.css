@@ -1,0 +1,135 @@
+
+#form_login, #form_signup, #form_recover,
+#msg_signup2, #msg_signup3ok, #msg_recover, #msg_recover2, #msg_recover4ok,
+#form_recover3,
+#error,
+#button_login, #button_signup, #button_recover, #button_recover3, #button_recover4,
+#button_enter {
+  display: none;
+}
+
+#main.login #sec_login a, #main.signup #sec_signup a, #main.recover #sec_recover a,
+#main.signup2 #sec_signup a, #main.signup3 #sec_signup a, #main.signup3fail #sec_signup a,
+#main.recover2 #sec_recover a, #main.recover3fail #sec_recover a, #main.recover4 #sec_recover a {
+  color: var(--c-font);
+}
+
+#main.login #form_login, #main.login #error, #main.login #button_login,
+#main.signup #form_signup, #main.signup #error, #main.signup #button_signup,
+#main.signup2 #msg_signup2,
+#main.signup3 #msg_signup3ok, #main.signup3 #button_enter,
+#main.signup3fail #error,
+#main.recover #msg_recover, #main.recover #form_recover, #main.recover #error, #main.recover #button_recover,
+#main.recover2 #msg_recover2,
+#main.recover3 #form_recover3, #main.recover3 #error, #main.recover3 #button_recover3,
+#main.recover3fail #error,
+#main.recover4 #msg_recover4ok, #main.recover4 #form_recover4, #main.recover4 #button_recover4 {
+  display: block;
+}
+
+/******************************************************************************/
+
+#main {
+  padding: 1em 1em;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4em;
+  margin: 0.5em 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1em 0;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+h2 a {
+  text-decoration: none;
+  color: var(--c-disabled);
+}
+
+form {
+  margin: 3em 0;
+}
+
+.input_group {
+  margin: 1em 0;
+}
+
+.icon_grid {
+  display: grid;
+  grid-template-columns: 0 1fr;
+  align-items: end;
+}
+
+.icon_grid span {
+  font-size: 1.8em;
+  padding: 0.2em 0;
+}
+
+.icon_grid input {
+  padding: 0 2.2em;
+}
+
+.icon_grid p {
+  grid-column-end: span 2;
+}
+
+input {
+  background-color: transparent;
+  color: var(--c-font);
+  text-align: center;
+  border: unset;
+  border-bottom: 2px solid var(--c-disabled);
+  outline: none;
+  font-size: 1.2em;
+  width: 100%;
+  margin-top: 0.9em;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--c-font);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+button {
+  background-color: transparent;
+  color: var(--c-font);
+  border: 2px solid var(--c-disabled);
+  outline: none;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.error, .warning {
+  color: var(--c-warning);
+}
+
+.warning {
+  text-align: right;
+  font-size: 0.8em;
+}
+
+p.msg {
+  margin: 3em 0;
+}

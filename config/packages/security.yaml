@@ -1,0 +1,23 @@
+security:
+    encoders:
+        App\Entity\Uzer:
+            algorithm: argon2i
+    providers:
+        users:
+            entity:
+                class: App\Entity\Uzer
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            guard:
+                authenticators:
+                    - App\Security\LoginAuthenticator
+            logout:
+                path: logout
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

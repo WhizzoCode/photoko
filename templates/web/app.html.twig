@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+  <script defer src="{{ asset('js/Api.js') }}"></script>
+  <script defer src="{{ asset('js/Retoko.js') }}"></script>
+  <script defer src="{{ asset('js/Gallery.js') }}"></script>
+  <script defer src="{{ asset('js/Editor.js') }}"></script>
+  <script defer src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+  <div id="gallery"> <!-- id = gallery | editor | admin -->
+
+    <div id="header">
+      <h1 class="logo">Photoko</h1>
+      <div>
+        <span id="username"></span>
+        <span id="userIcon" class="fas fa-user"></span>
+        <span><a href="{{ path('logout') }}">Salir</a></span>
+      </div>
+    </div>
+
+    <div id="tools-gallery" class="tools">
+      <div class="tools-container">
+        <label for="files">Archivos</label>
+        <input id="files" type="file" accept="image/jpeg" multiple>
+        <span id="upload-photos" class="fas fa-cloud-upload-alt"></span>
+        <span id="edit-photo" class="fas fa-sliders-h disabled"></span>
+        <span id="delete-photo" class="fas fa-trash disabled"></span>
+      </div>
+    </div>
+
+    <div id="tools-editor-small" class="tools">
+      <div class="tools-container">
+        <span id="go-gallery-small" class="fas fa-images"></span>
+        <span class="fas fa-undo"></span>
+        <span class="fas fa-eye"></span>
+        <span id="group-light-small" class="fas fa-sun"></span>
+        <span id="group-color-small" class="fas fa-tint"></span>
+        <span><a id="download-small"><span class="fas fa-cloud-download-alt"></span></a></span>
+      </div>
+    </div>
+
+    <div id="tools-editor-big" class="tools">
+      <span id="go-gallery-big" class="fas fa-images"></span>
+      <div>
+        <span class="fas fa-minus-circle"></span>
+        <span class="fas fa-plus-circle"></span>
+        <span class="fas fa-expand"></span>
+      </div>
+      <span class="fas fa-eye"></span>
+      <span class="fas fa-undo"></span>
+      <span><a id="download-big"><span class="fas fa-cloud-download-alt"></span></a></span>
+    </div>
+
+    <div id="groups">
+      <div id="group-light-big">Luz</div>
+      <div id="group-color-big">Color</div>
+    </div>
+
+    <div id="adjustments">
+      <div id="adjustments-light">
+        <div>
+          <label for="adj-black">Negro</label>
+          <input type="range" id="adj-black" min="0" max="255" step="1">
+          <output id="output-black">0</output>
+        </div>
+        <div>
+          <label for="adj-white">Blanco</label>
+          <input type="range" id="adj-white" min="0" max="255" step="1">
+          <output id="output-white">0</output>
+        </div>
+        <div>
+          <label for="adj-brightness">Brillo</label>
+          <input type="range" id="adj-brightness" min="-255" max="255" step="1">
+          <output id="output-brightness">0</output>
+        </div>
+        <div>
+          <label for="adj-shadows">Sombras</label>
+          <input type="range" id="adj-shadows" min="-40" max="40" step="1">
+          <output id="output-shadows">0</output>
+        </div>
+        <div>
+          <label for="adj-medium">Medios</label>
+          <input type="range" id="adj-medium" min="-40" max="40" step="1">
+          <output id="output-medium">0</output>
+        </div>
+        <div>
+          <label for="adj-lights">Luces</label>
+          <input type="range" id="adj-lights" min="-40" max="40" step="1">
+          <output id="output-lights">0</output>
+        </div>
+      </div>
+      <div id="adjustments-color">
+        <div>
+          <label for="adj-hue">Matiz</label>
+          <input type="range" id="adj-hue" min="0" max="360" step="1">
+          <output id="output-hue">0</output>
+        </div>
+        <div>
+          <label for="adj-saturation">Saturación</label>
+          <input type="range" id="adj-saturation" min="0" max="4" step="0.1">
+          <output id="output-saturation">0</output>
+        </div>
+        <div>
+          <label for="adj-temperature">Temp.</label>
+          <input type="range" id="adj-temperature" min="1000" max="40000" step="100">
+          <output id="output-temperature">0</output>
+        </div>
+      </div>
+    </div>
+
+    <div id="photos">
+      <div id="photos-container"></div>
+      <div id="photos-drop">
+        <span class="fas fa-cloud-upload-alt"></span>
+      </div>
+      <div id="photos-msg"></div>
+    </div>
+
+    <div id="photo">
+      <canvas id="view"></canvas>
+    </div>
+
+    <div id="histogram">
+      <canvas id="histo"></canvas>
+    </div>
+
+    <div id="admin-view">
+      <h2>Usuarios:</h2>
+      <table id="admin-table">
+      </table>
+    </div>
+
+  </div>
+{% endblock %}

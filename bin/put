@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+  $version = readline("Versión: ");
+
+  do {
+
+    echo shell_exec("git checkout master");
+    if (readline("Continuar? [S/n]: ") === 'n') break;
+
+    echo shell_exec('git merge --no-ff develop -m "v' . $version . '"');
+    if (readline("Continuar? [S/n]: ") === 'n') break;
+
+    echo shell_exec('git push origin master');
+    if (readline("Continuar? [S/n]: ") === 'n') break;
+
+    echo shell_exec('git checkout develop');
+    if (readline("Continuar? [S/n]: ") === 'n') break;
+  
+  } while (false);
+
+?>

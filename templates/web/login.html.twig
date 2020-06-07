@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+  <script defer src="{{ asset('js/login.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+  <div id="main" class="{{ view }}">
+
+    <h1>Photoko</h1>
+
+    <nav>
+      <h2 id="sec_signup"><a href="#">Registrar</a></h2>
+      <h2 id="sec_login"><a href="#">Entrar</a></h2>
+      <h2 id="sec_recover"><a href="#">Recuperar</a></h2>
+    </nav>
+
+    <p id="msg_signup2" class="msg">
+      Se te ha enviado un correo para confirmar tu dirección
+    </p>
+
+    <p id="msg_signup3ok" class="msg">
+      Gracias por registrarte, adelante...
+    </p>
+
+    <p id="msg_recover" class="msg">
+      Recibirás un correo desde el que podrás restablecer la contraseña
+    </p>
+
+    <p id="msg_recover2" class="msg">
+      Revisa tu correo para continuar con la recuperación
+    </p>
+
+    <p id="msg_recover4ok" class="msg">
+      Contraseña cambiada con éxito
+    </p>
+
+    <form id="form_login" method="post" action="{{ path('login') }}" novalidate>
+      <input type="hidden" name="view" value="login">
+      <div class="input_group icon_grid">
+        <span class="fas fa-at"></span>
+        <label for="l_email">Email</label>
+        <input type="email" name="username" id="l_email" autocomplete="email" value="{{ email }}" maxlength="180" required>
+        <p class="warning"></p>
+      </div>
+      <div class="input_group icon_grid">
+        <span class="fas fa-key"></span>
+        <label for="l_password">Password</label>
+        <input type="password" name="password" id="l_password" autocomplete="current-password" required>
+        <p class="warning"></p>
+      </div>
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    </form>
+
+    <form id="form_signup" method="post" action="{{ path('login') }}" novalidate>
+      <input type="hidden" name="view" value="signup">
+      <div class="input_group">
+        <label for="s_name">Nombre de usuario</label>
+        <input type="text" name="name" id="s_name" autocomplete="username" value="{{ name }}" maxlength="20" required placeholder="Nombre de usuario">
+        <p class="warning"></p>
+      </div>
+      <div class="input_group">
+        <label for="s_email">Email</label>
+        <input type="email" name="email" id="s_email" autocomplete="email" value="{{ email }}" maxlength="180" required placeholder="Email">
+        <p class="warning"></p>
+      </div>
+      <div class="input_group">
+        <label for="s_password">Contraseña</label>
+        <input type="password" name="password" id="s_password" autocomplete="new-password" required placeholder="Contraseña">
+        <p class="warning"></p>
+      </div>
+      <div class="input_group">
+        <label for="s_password2">Contraseña</label>
+        <input type="password" name="password2" id="s_password2" autocomplete="new-password" required placeholder="Repite la contraseña">
+        <p class="warning"></p>
+      </div>
+    </form>
+
+    <form id="form_recover" method="post" action="{{ path('login') }}" novalidate>
+      <input type="hidden" name="view" value="recover">
+      <div class="input_group">
+        <label for="r_email">Email</label>
+        <input type="email" name="email" id="r_email" autocomplete="email" value="{{ email }}" maxlength="180" required placeholder="Email">
+        <p class="warning"></p>
+      </div>
+    </form>
+
+    <form id="form_recover3" method="post" novalidate>
+      <input type="hidden" name="view" value="recover3">
+      <div class="input_group">
+        <label for="r_password">Contraseña</label>
+        <input type="password" name="password" id="r_password" autocomplete="new-password" required placeholder="Contraseña">
+        <p class="warning"></p>
+      </div>
+      <div class="input_group">
+        <label for="r_password2">Contraseña</label>
+        <input type="password" name="password2" id="r_password2" autocomplete="new-password" required placeholder="Repite la contraseña">
+        <p class="warning"></p>
+      </div>
+    </form>
+
+    <form id="form_recover4" method="post" novalidate>
+      <input type="hidden" name="view" value="recover4">
+    </form>
+
+    <p id="error" class="msg error">{{ error }}</p>
+
+    <button id="button_login" type="submit" form="form_login">Entrar</button>
+
+    <button id="button_signup" type="submit" form="form_signup">Registrar</button>
+
+    <button id="button_recover" type="submit" form="form_recover">Restablecer</button>
+
+    <button id="button_recover3" type="submit" form="form_recover3">Restablecer</button>
+
+    <button id="button_recover4" type="submit" form="form_recover4">Entrar</button>
+
+    <button id="button_enter">Entrar</button>
+
+  </div>
+{% endblock %}

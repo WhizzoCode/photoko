@@ -1,0 +1,67 @@
+
+/*******************************************************************************
+* COLORES
+*******************************************************************************/
+
+:root {
+  --c-background:   hsl(216,   7%,  14%);
+  --c-font:         hsl(  0,   0%, 100%);
+  --c-disabled:     hsl(214,   5%,  27%);
+  --c-selected:     hsl(197,  90%,  55%);
+  --c-selected-tr:  hsla(197,  90%,  55%, 0.5);
+  --c-selected-tr2: hsla(197,  90%,  55%, 0.1);
+  --c-mediumgray:   hsl(  0,   0%,  33%);
+  --c-histogram:    hsl(200,   8%,   7%);
+  --c-warning:      hsl(  0, 100%,  65%);
+}
+
+/*******************************************************************************
+* FUENTES E ICONOS
+*******************************************************************************/
+
+@font-face {
+  font-family: 'Lato';
+  src: url(Lato-Regular.woff2),
+       url(Lato-Regular.woff),
+       url(Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Berkshire Swash';
+  src: url(BerkshireSwash-Regular.woff2),
+       url(BerkshireSwash-Regular.woff),
+       url(BerkshireSwash-Regular.ttf);
+}
+
+/*******************************************************************************
+* GENERAL
+*******************************************************************************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Lato, sans-serif;
+  background-color: var(--c-background);
+  color: var(--c-font);
+}
+
+h1 {
+  font-family: 'Berkshire Swash', cursive;
+  font-weight: normal;
+}
+
+a {
+  color: var(--c-font);
+}
+
+#main label, #tools-gallery label {
+  display: none;
+}

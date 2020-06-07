@@ -1,0 +1,552 @@
+
+/*******************************************************************************
+* ESTRUCTURA (SMARTPHONE RETRATO)
+*******************************************************************************/
+
+#header, #tools-gallery, #tools-editor-small, #tools-editor-big, #groups,
+#adjustments, #photos, #photo, #histogram, #admin-view {
+  display: none;
+}
+
+#gallery, #editor, #admin {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  user-select: none;
+}
+
+#gallery #header, #admin #header {
+  display: flex;
+  order: 1;
+  height: 3.5em;
+}
+
+#gallery #photos {
+  display: flex;
+  flex: 1;
+  order: 2;
+}
+
+#gallery #tools-gallery, #editor #tools-editor-small {
+  display: flex;
+  order: 3;
+  height: 3.5em;
+}
+
+#admin #admin-view {
+  display: block;
+  flex: 1;
+  order: 2;
+}
+
+#editor #photo {
+  display: block;
+  order: 1;
+  flex: 1;
+}
+
+#editor #adjustments {
+  order: 2;
+  height: 40%;
+}
+
+#gallery #adjustments {
+  display: none;
+}
+
+/*******************************************************************************
+* ESTRUCTURA (SMARTPHONE APAISADO)
+*******************************************************************************/
+
+@media only screen and (max-width: 767px) and (min-aspect-ratio: 3/2) {
+  #editor {
+    flex-direction: row;
+  }
+
+  #editor #adjustments {
+    height: auto;
+    width: 45%;
+  }
+
+  #editor #tools-editor-small {
+    height: auto;
+    width: 3.5em;
+  }
+}
+
+/*******************************************************************************
+* ESTRUCTURA (TABLET / PC)
+*******************************************************************************/
+
+@media only screen and (min-width: 768px) {
+  #editor {
+    display: grid;
+    grid-template-columns: auto 20em;
+    grid-template-rows: 3.5em 10em 3.5em auto 1.5em;
+    padding: 1em;
+    grid-gap: 1em;
+  }
+
+  #editor #header {
+    display: flex;
+    grid-area: 1 / 1 / 2 / 3;
+    height: auto;
+    margin: 0;
+  }
+
+  #gallery #header {
+    height: 5.5em;
+  }
+
+  #editor #tools-editor-small {
+    display: none;
+  }
+
+  #editor #tools-editor-big {
+    display: flex;
+    grid-area: 5 / 1 / 6 / 2;
+  }
+
+  #editor #groups {
+    display: flex;
+    grid-area: 3 / 2 / 4 / 3;
+  }
+
+  #editor #adjustments {
+    display: flex;
+    grid-area: 4 / 2 / 5 / 3;
+    height: auto;
+    padding: 0;
+  }
+
+  #editor #photo {
+    grid-area: 2 / 1 / 5 / 2;
+  }
+
+  #editor #histogram {
+    display: block;
+    grid-area: 2 / 2 / 3 / 3;
+  }
+}
+
+/*******************************************************************************
+* CABECERA
+*******************************************************************************/
+
+#header {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+#header span {
+  margin-left: 0.25em;
+}
+
+#header #username.admin {
+  color: red;
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+
+/*******************************************************************************
+* HERRAMIENTAS
+*******************************************************************************/
+
+.tools {
+  border-top: 2px solid var(--c-disabled);
+  justify-content: center;
+}
+
+.tools-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 576px;
+  width: 576px;
+}
+
+.tools input {
+  display: none;
+}
+
+.tools span {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.tools span a span {
+  font-size: 1em;
+}
+
+.tools .selected {
+  color: var(--c-selected);
+}
+
+.tools .disabled {
+  color: var(--c-disabled);
+}
+
+@media only screen and (max-width: 767px) and (min-aspect-ratio: 3/2) {
+  #editor .tools {
+    border-left: 2px solid var(--c-disabled);
+    border-top: unset;
+  }
+
+  #editor .tools-container {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #editor .tools {
+    border-top: unset;
+  }
+
+  #editor .tools > * {
+    margin: 0 0.8em;
+  }
+
+  #editor .tools > div > span {
+    margin: 0 0.1em;
+  }
+}
+
+/*******************************************************************************
+* GRUPOS
+*******************************************************************************/
+
+#groups {
+  justify-content: space-around;
+  align-items: center;
+}
+
+#groups div {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#groups .selected {
+  color: var(--c-selected);
+}
+
+/*******************************************************************************
+* AJUSTES
+*******************************************************************************/
+
+#adjustments {
+  padding: 1em;
+  overflow: auto;
+}
+
+#editor #adjustments.show {
+  display: flex;
+}
+
+#adjustments > div {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+
+#adjustments > div.show {
+  display: flex;
+}
+
+#adjustments > div > div {
+  display: flex;
+  margin: 1em 0;
+}
+
+#adjustments label {
+  width: 5em;
+}
+
+#adjustments input[type=range] {
+  flex: 1;
+}
+
+#adjustments output {
+  width: 3em;
+  text-align: right;
+}
+
+@media only screen and (max-width: 767px) and (min-aspect-ratio: 3/2) {
+  #adjustments > div {
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #adjustments > div > div {
+    margin: 0.5em 0;
+  }
+}
+
+/*******************************************************************************
+* AJUSTES (RANGO)
+*******************************************************************************/
+
+#adjustments input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+#adjustments input[type=range]:focus {
+  outline: none;
+}
+
+#adjustments input[type=range]::-moz-focus-outer {
+  border: 0;
+}
+
+#adjustments input[type=range]::-webkit-slider-runnable-track {
+  background-color: var(--c-disabled);
+  height: 2px;
+}
+
+#adjustments input[type=range]::-moz-range-track {
+  background-color: var(--c-disabled);
+  height: 2px;
+}
+
+#adjustments input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 2.4em;
+  width: 2.4em;
+  border: 1px solid var(--c-font);
+  border-radius: 2em;
+  background-color: var(--c-background);
+  margin-top: -1.2em;
+}
+
+#adjustments input[type=range]::-moz-range-thumb {
+  height: 2.4em;
+  width: 2.4em;
+  border: 1px solid var(--c-font);
+  border-radius: 2em;
+  background-color: var(--c-background);
+}
+
+@media only screen and (min-width: 768px) {
+  #adjustments input[type=range]::-webkit-slider-thumb {
+    height: 1.2em;
+    width: 1.2em;
+    margin-top: -0.5em;
+  }
+  
+  #adjustments input[type=range]::-moz-range-thumb {
+    height: 1.2em;
+    width: 1.2em;
+  }
+}
+
+/*******************************************************************************
+* FOTOS
+*******************************************************************************/
+
+#photos {
+  flex-direction: column;
+}
+
+#photos-msg {
+  text-align: center;
+  color: var(--c-selected);
+  font-size: 1.2em;
+  margin: 0;
+  overflow-y: hidden;
+  max-height: 0;
+  transition-property: all;
+	transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+#photos-msg.show {
+  max-height: 1.2em;
+  margin: 1em 0;
+}
+
+#photos-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex: 1;
+  overflow: auto;
+}
+
+.photo {
+  width: calc(100% / 3);
+  height: calc(100vw / 3);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.selection {
+  width: 100%;
+  height: 100%;
+  border: 1vw solid transparent;
+  padding: 3vw 2vw;
+  position: relative;
+}
+
+.selection.show {
+  border-color: var(--c-selected-tr);
+  background-color: var(--c-selected-tr2);
+}
+
+#photos-container .fas {
+  display: none;
+  background-color: var(--c-background);
+  color: var(--c-selected);
+  font-size: 4vw;
+  padding: 1.5vw;
+}
+
+#photos-container .fas.show {
+  display: inline;
+}
+
+#photos.container.hide {
+  display: none;
+}
+
+#photos-drop {
+  display: none;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#photos-drop.show {
+  display: flex;
+}
+
+#photos-drop span {
+  font-size: 3em;
+}
+
+@media only screen and (min-width: 600px) {
+  .photo {width: calc(100% / 4); height: calc(100vw / 4);}
+
+  .selection {
+    padding: 0.75em 0.5em;
+    border-width: 6px;
+  }
+
+  #photos-container .fas {
+    font-size: 1.3em;
+    padding: 0.25em;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .photo {width: calc(100% / 5); height: calc(100vw / 5);}
+}
+@media only screen and (min-width: 900px) {
+  .photo {width: calc(100% / 6); height: calc(100vw / 6);}
+}
+@media only screen and (min-width: 1050px) {
+  .photo {width: calc(100% / 7); height: calc(100vw / 7);}
+}
+@media only screen and (min-width: 1200px) {
+  .photo {width: calc(100% / 8); height: calc(100vw / 8);}
+}
+@media only screen and (min-width: 1350px) {
+  .photo {width: calc(100% / 9); height: calc(100vw / 9);}
+}
+@media only screen and (min-width: 1500px) {
+  .photo {width: calc(100% / 10); height: calc(100vw / 10);}
+}
+@media only screen and (min-width: 1650px) {
+  .photo {width: calc(100% / 11); height: calc(100vw / 11);}
+}
+@media only screen and (min-width: 1800px) {
+  .photo {width: calc(100% / 12); height: calc(100vw / 12);}
+}
+@media only screen and (min-width: 1950px) {
+  .photo {width: calc(100% / 13); height: calc(100vw / 13);}
+}
+@media only screen and (min-width: 2100px) {
+  .photo {width: calc(100% / 14); height: calc(100vw / 14);}
+}
+
+/*******************************************************************************
+* FOTO
+*******************************************************************************/
+
+#photo {
+  background-color: var(--c-mediumgray);
+}
+
+#view {
+  position: absolute;
+}
+
+/*******************************************************************************
+* HISTOGRAMA
+*******************************************************************************/
+
+#histogram {
+  background-color: var(--c-histogram);
+}
+
+#histo {
+  width: 100%;
+  height: 100%;
+}
+
+/*******************************************************************************
+* ADMIN
+*******************************************************************************/
+
+#admin-view {
+  padding: 0 1em;
+}
+
+#admin-view h2 {
+  text-align: center;
+  margin: 1em auto;
+}
+
+#admin-view table {
+  width: 100%;
+  text-align: center;
+}
+
+#admin-view td {
+  height: 2em;
+}
+
+#admin-view .admin-table-big {
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  #admin-view tr.admin-table-big {
+    display: table-row;
+  }
+
+  #admin-view td.admin-table-big {
+    display: table-cell;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #admin-view table {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
